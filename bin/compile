@@ -225,7 +225,7 @@ if [ -d /app/conf ]; then
 fi
 
 # Set correct port variable.
-sed "s/\$PORT/$PORT/g" /app/vendor/nginx/conf/nginx.conf.tpl > /app/vendor/nginx/conf/nginx.conf
+sed "s/\\\$PORT/\$PORT/g" /app/vendor/nginx/conf/nginx.conf.tpl > /app/vendor/nginx/conf/nginx.conf
 # Set NEWRELIC key
 if [ -x "/app/local/bin/newrelic-license" ]; then
 	/app/local/bin/newrelic-license
