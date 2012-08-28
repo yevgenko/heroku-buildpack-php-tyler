@@ -197,8 +197,7 @@ cp $LP_DIR/conf/nginx.conf.tpl ${BUILD_DIR}/vendor/nginx/conf/nginx.conf.tpl
 #erb $LP_DIR/conf/nginx.conf.erb > ${BUILD_DIR}/vendor/nginx/conf/nginx.conf
 
 echo "-----> Installing pecl extensions"
-PECL=${BUILD_DIR}/vendor/php/bin/pecl
-$PECL install inotify
+LD_LIBRARY_PATH="${BUILD_DIR}/local/lib" ${BUILD_DIR}/vendor/php/bin/pecl install inotify
 
 echo "-----> Installing boot script"
 cd $BUILD_DIR
