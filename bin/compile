@@ -196,6 +196,10 @@ cp -a $LP_DIR/conf/etc.d ${BUILD_DIR}/vendor/php/
 cp $LP_DIR/conf/nginx.conf.tpl ${BUILD_DIR}/vendor/nginx/conf/nginx.conf.tpl
 #erb $LP_DIR/conf/nginx.conf.erb > ${BUILD_DIR}/vendor/nginx/conf/nginx.conf
 
+echo "-----> Installing pecl extensions"
+PECL=${BUILD_DIR}/vendor/php/bin/pecl
+$PECL install inotify
+
 echo "-----> Installing boot script"
 cd $BUILD_DIR
 cat >>boot.sh <<EOF
